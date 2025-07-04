@@ -1,3 +1,4 @@
+
 plugins {
 	java
 	id("org.springframework.boot") version "3.5.3"
@@ -14,6 +15,7 @@ java {
 }
 
 configurations {
+	create("mybatisGenerator")
 	compileOnly {
 		extendsFrom(configurations.annotationProcessor.get())
 	}
@@ -32,8 +34,19 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	add("mybatisGenerator", "org.mybatis.generator:mybatis-generator-core:1.4.2")
+	add("mybatisGenerator", "com.h2database:h2:2.2.224")
 }
+
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.register<JavaExec>("mybatisGenerate") {
+    group = "MyBatis Generator"
+    description = "Generates MyBatis artifacts"
+		classpath = configurations["mybatisGenerator"]
+    mainClass.set("org.mybatis.generator.api.ShellRunner")
+    args("-configfile", "src/main/resources/generatorConfig.xml", "-overwrite")
 }
