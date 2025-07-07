@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <classPathEntry location="${user.home}/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar"/>
 
-    <context id="default" targetRuntime="MyBatis3">
+    <context id="default" targetRuntime="MyBatis3DynamicSql">
         <jdbcConnection driverClass="org.h2.Driver"
                         connectionURL="jdbc:h2:file:./mybatis-db/testdb;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE"
                         userId="sa"
@@ -13,7 +13,6 @@
         </jdbcConnection>
 
         <javaModelGenerator targetPackage="com.example.demo.domain.model" targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="infrastructure.mapper" targetProject="src/main/resources"/>
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.infrastructure.mapper" targetProject="src/main/java"/>
 
         <table tableName="tasks"></table>

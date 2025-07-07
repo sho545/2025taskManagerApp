@@ -3,6 +3,7 @@ plugins {
 	java
 	id("org.springframework.boot") version "3.5.3"
 	id("io.spring.dependency-management") version "1.1.7"
+  // id("org.mybatis.generator") version "1.6.1"
 }
 
 group = "com.example"
@@ -16,9 +17,9 @@ java {
 
 configurations {
 	create("mybatisGenerator")
-	compileOnly {
-		extendsFrom(configurations.annotationProcessor.get())
-	}
+	// compileOnly {
+	// 	extendsFrom(configurations.annotationProcessor.get())
+	// }
 }
 
 repositories {
@@ -36,6 +37,11 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	add("mybatisGenerator", "org.mybatis.generator:mybatis-generator-core:1.4.2")
 	add("mybatisGenerator", "com.h2database:h2:2.2.224")
+	implementation("org.mybatis.dynamic-sql:mybatis-dynamic-sql:1.4.1") 
+  implementation("org.mybatis:mybatis:3.5.14")
+	implementation("org.mybatis:mybatis-spring:3.0.3") 
+	implementation("org.mybatis:mybatis-typehandlers-jsr310:1.0.2")
+
 }
 
 
