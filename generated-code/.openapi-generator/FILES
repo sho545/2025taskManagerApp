@@ -1,0 +1,15 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/com/example/demo/OpenApiGeneratorApplication.java
+src/main/java/com/example/demo/RFC3339DateFormat.java
+src/main/java/com/example/demo/application/controller/ApiUtil.java
+src/main/java/com/example/demo/application/controller/TasksApi.java
+src/main/java/com/example/demo/application/controller/TasksApiController.java
+src/main/java/com/example/demo/application/dto/Task.java
+src/main/java/com/example/demo/application/dto/TaskRequest.java
+src/main/java/org/openapitools/configuration/HomeController.java
+src/main/java/org/openapitools/configuration/SpringDocConfiguration.java
+src/main/resources/application.properties
+src/main/resources/openapi.yaml
+src/test/java/com/example/demo/OpenApiGeneratorApplicationTests.java

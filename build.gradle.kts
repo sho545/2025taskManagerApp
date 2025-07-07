@@ -41,7 +41,11 @@ dependencies {
   implementation("org.mybatis:mybatis:3.5.14")
 	implementation("org.mybatis:mybatis-spring:3.0.3") 
 	implementation("org.mybatis:mybatis-typehandlers-jsr310:1.0.2")
-
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+  implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("javax.validation:validation-api:2.0.1.Final")
+  implementation("javax.annotation:javax.annotation-api:1.3.2")
+	implementation("org.openapitools:jackson-databind-nullable:0.2.6")
 }
 
 

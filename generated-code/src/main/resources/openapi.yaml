@@ -1,0 +1,150 @@
+openapi: 3.1.0
+info:
+  description: API for managing tasks
+  title: Task Management API
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+paths:
+  /tasks:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Task"
+                type: array
+          description: A list of tasks
+      summary: Get all tasks
+      x-accepts:
+      - application/json
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskRequest"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+          description: Task created
+      summary: Create a new task
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /tasks/{id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: Task deleted
+        "404":
+          description: Task not found
+      summary: Delete a task by ID
+      x-accepts:
+      - application/json
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+          description: A single task
+        "404":
+          description: Task not found
+      summary: Get a task by ID
+      x-accepts:
+      - application/json
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+          description: Task updated
+        "404":
+          description: Task not found
+      summary: Update a task by ID
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    Task:
+      example:
+        dueDate: 2025-07-07T23:59:00Z
+        description: "Milk, eggs, bread"
+        id: 1
+        completed: false
+        title: Buy groceries
+      properties:
+        id:
+          example: 1
+          type: integer
+        title:
+          example: Buy groceries
+          type: string
+        description:
+          example: "Milk, eggs, bread"
+          type: string
+        completed:
+          example: false
+          type: boolean
+        dueDate:
+          example: 2025-07-07T23:59:00Z
+          format: date-time
+          type: string
+    TaskRequest:
+      example:
+        description: "Milk, eggs, bread"
+        completed: false
+        title: Buy groceries
+      properties:
+        title:
+          example: Buy groceries
+          type: string
+        description:
+          example: "Milk, eggs, bread"
+          type: string
+        completed:
+          example: false
+          type: boolean
+      required:
+      - title
