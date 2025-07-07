@@ -22,9 +22,9 @@ import jakarta.annotation.Generated;
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-07T11:55:36.853454400+09:00[Asia/Tokyo]", comments = "Generator version: 7.14.0")
-public class Task {
+public class TaskDto {
 
-  private @Nullable Integer id;
+  private @Nullable Long id;
 
   private @Nullable String title;
 
@@ -35,7 +35,7 @@ public class Task {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime dueDate;
 
-  public Task id(@Nullable Integer id) {
+  public TaskDto id(@Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -47,15 +47,15 @@ public class Task {
   
   @Schema(name = "id", example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public @Nullable Integer getId() {
+  public @Nullable Long getId() {
     return id;
   }
 
-  public void setId(@Nullable Integer id) {
+  public void setId(@Nullable Long id) {
     this.id = id;
   }
 
-  public Task title(@Nullable String title) {
+  public TaskDto title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -75,7 +75,7 @@ public class Task {
     this.title = title;
   }
 
-  public Task description(@Nullable String description) {
+  public TaskDto description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -95,7 +95,7 @@ public class Task {
     this.description = description;
   }
 
-  public Task completed(@Nullable Boolean completed) {
+  public TaskDto completed(@Nullable Boolean completed) {
     this.completed = completed;
     return this;
   }
@@ -115,7 +115,7 @@ public class Task {
     this.completed = completed;
   }
 
-  public Task dueDate(@Nullable OffsetDateTime dueDate) {
+  public TaskDto dueDate(@Nullable OffsetDateTime dueDate) {
     this.dueDate = dueDate;
     return this;
   }
@@ -143,7 +143,7 @@ public class Task {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Task task = (Task) o;
+    TaskDto task = (TaskDto) o;
     return Objects.equals(this.id, task.id) &&
         Objects.equals(this.title, task.title) &&
         Objects.equals(this.description, task.description) &&

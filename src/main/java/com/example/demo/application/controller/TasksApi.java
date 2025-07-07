@@ -5,7 +5,7 @@
  */
 package com.example.demo.application.controller;
 
-import com.example.demo.application.dto.Task;
+import com.example.demo.application.dto.TaskDto;
 import com.example.demo.application.dto.TaskRequest;
 import com.example.demo.application.helper.ApiUtil;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
@@ -55,7 +55,7 @@ public interface TasksApi {
         summary = "Get all tasks",
         responses = {
             @ApiResponse(responseCode = "200", description = "A list of tasks", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Task.class)))
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = TaskDto.class)))
             })
         }
     )
@@ -65,7 +65,7 @@ public interface TasksApi {
         produces = { "application/json" }
     )
     
-    default ResponseEntity<List<Task>> tasksGet(
+    default ResponseEntity<List<TaskDto>> tasksGet(
         
     ) {
         getRequest().ifPresent(request -> {
@@ -103,7 +103,7 @@ public interface TasksApi {
     )
     
     default ResponseEntity<Void> tasksIdDelete(
-        @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Integer id
+        @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -122,7 +122,7 @@ public interface TasksApi {
         summary = "Get a task by ID",
         responses = {
             @ApiResponse(responseCode = "200", description = "A single task", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = TaskDto.class))
             }),
             @ApiResponse(responseCode = "404", description = "Task not found")
         }
@@ -133,8 +133,8 @@ public interface TasksApi {
         produces = { "application/json" }
     )
     
-    default ResponseEntity<Task> tasksIdGet(
-        @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Integer id
+    default ResponseEntity<TaskDto> tasksIdGet(
+        @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -163,7 +163,7 @@ public interface TasksApi {
         summary = "Update a task by ID",
         responses = {
             @ApiResponse(responseCode = "200", description = "Task updated", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = TaskDto.class))
             }),
             @ApiResponse(responseCode = "404", description = "Task not found")
         }
@@ -175,8 +175,8 @@ public interface TasksApi {
         consumes = { "application/json" }
     )
     
-    default ResponseEntity<Task> tasksIdPut(
-        @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Integer id,
+    default ResponseEntity<TaskDto> tasksIdPut(
+        @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id,
         @Parameter(name = "TaskRequest", description = "", required = true) @Valid @RequestBody TaskRequest taskRequest
     ) {
         getRequest().ifPresent(request -> {
@@ -204,7 +204,7 @@ public interface TasksApi {
         summary = "Create a new task",
         responses = {
             @ApiResponse(responseCode = "201", description = "Task created", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = TaskDto.class))
             })
         }
     )
@@ -215,7 +215,7 @@ public interface TasksApi {
         consumes = { "application/json" }
     )
     
-    default ResponseEntity<Task> tasksPost(
+    default ResponseEntity<TaskDto> tasksPost(
         @Parameter(name = "TaskRequest", description = "", required = true) @Valid @RequestBody TaskRequest taskRequest
     ) {
         getRequest().ifPresent(request -> {

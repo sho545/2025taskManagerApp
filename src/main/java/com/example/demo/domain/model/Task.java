@@ -3,7 +3,7 @@ package com.example.demo.domain.model;
 import jakarta.annotation.Generated;
 import java.util.Date;
 
-public class Tasks {
+public class Task {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-07T09:36:45.6924855+09:00", comments="Source field: TASKS.ID")
     private Long id;
 
