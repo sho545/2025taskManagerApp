@@ -117,6 +117,7 @@ components:
       type: object
       required:
         - title
+        - dueDate
       properties:
         title:
           type: string
@@ -127,3 +128,7 @@ components:
         completed:
           type: boolean
           example: false
+        dueDate:
+          type: string
+          format: date-time
+          example: 2025-07-07T23:59:00Z

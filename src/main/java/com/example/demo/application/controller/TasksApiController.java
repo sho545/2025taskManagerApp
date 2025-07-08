@@ -2,31 +2,18 @@ package com.example.demo.application.controller;
 
 import com.example.demo.application.dto.TaskDto;
 import com.example.demo.application.dto.TaskRequest;
+import com.example.demo.application.helper.TaskMapper;
+import com.example.demo.domain.model.Task;
+import com.example.demo.domain.service.TaskService;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.lang.Nullable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.context.request.NativeWebRequest;
-
-import jakarta.validation.constraints.*;
-import jakarta.validation.Valid;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.stream.Collectors;
+
 import jakarta.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-07T11:55:36.853454400+09:00[Asia/Tokyo]", comments = "Generator version: 7.14.0")
@@ -34,41 +21,45 @@ import jakarta.annotation.Generated;
 @RequestMapping("${openapi.taskManagement.base-path:}")
 public class TasksApiController implements TasksApi {
 
-    private final NativeWebRequest request;
+    private final TaskService taskService;
 
-    @Autowired
-    public TasksApiController(NativeWebRequest request) {
-        this.request = request;
-    }
-
-    @Override
-    public Optional<NativeWebRequest> getRequest() {
-        return Optional.ofNullable(request);
+    public TasksApiController(TaskService taskService) {
+        this.taskService = taskService;
     }
 
     @Override
     public ResponseEntity<List<TaskDto>> tasksGet(){
-
+        List<Task> tasks = taskService.findAll();
+        List<TaskDto> dtoList = tasks.stream().map(TaskMapper::toDto).collect(Collectors.toList());
+        return ResponseEntity.ok(dtoList);
     }
 
     @Override
-    public ResponseEntity<void> tasksIDelete(Long id){
-
+    public ResponseEntity<Void> tasksIdDelete(Long id){
+        boolean isDeleted = taskService.delete(id) ;
+        return isDeleted ? ResponseEntity.noContent().build()
+                         : ResponseEntity.notFound().build();
     }
 
     @Override
     public ResponseEntity<TaskDto> tasksIdGet(Long id){
-
+        return taskService.findById(id).map(TaskMapper::toDto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    //タスク更新
     @Override
     public ResponseEntity<TaskDto> tasksIdPut(Long id, TaskRequest taskRequest){
-
+        Task task = TaskMapper.toEntity(taskRequest);
+        return taskService.update(id, task).map(TaskMapper::toDto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    //タスク作成
     @Override
     public ResponseEntity<TaskDto> tasksPost(TaskRequest taskRequest){
-        
+        Task task = TaskMapper.toEntity(taskRequest);
+        Task createdTask = taskService.create(task);
+        TaskDto dto = TaskMapper.toDto(createdTask);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED) ;
     }
 
 
