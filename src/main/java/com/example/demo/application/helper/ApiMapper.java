@@ -7,9 +7,9 @@ import com.example.demo.application.dto.TaskDto;
 import com.example.demo.application.dto.TaskRequest;
 import com.example.demo.domain.model.Task;
 
-public class TaskMapper {
+public class ApiMapper {
   //インスタンス化されないようにコンストラクタをprivate化
-  private TaskMapper(){}
+  private ApiMapper(){}
 
   public static TaskDto toDto(Task task){
     TaskDto dto = new TaskDto() ;

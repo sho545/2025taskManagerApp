@@ -2,7 +2,7 @@ package com.example.demo.application.controller;
 
 import com.example.demo.application.dto.TaskDto;
 import com.example.demo.application.dto.TaskRequest;
-import com.example.demo.application.helper.TaskMapper;
+import com.example.demo.application.helper.ApiMapper;
 import com.example.demo.domain.model.Task;
 import com.example.demo.domain.service.TaskService;
 
@@ -30,7 +30,7 @@ public class TasksApiController implements TasksApi {
     @Override
     public ResponseEntity<List<TaskDto>> tasksGet(){
         List<Task> tasks = taskService.findAll();
-        List<TaskDto> dtoList = tasks.stream().map(TaskMapper::toDto).collect(Collectors.toList());
+        List<TaskDto> dtoList = tasks.stream().map(ApiMapper::toDto).collect(Collectors.toList());
         return ResponseEntity.ok(dtoList);
     }
 
@@ -43,22 +43,22 @@ public class TasksApiController implements TasksApi {
 
     @Override
     public ResponseEntity<TaskDto> tasksIdGet(Long id){
-        return taskService.findById(id).map(TaskMapper::toDto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return taskService.findById(id).map(ApiMapper::toDto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     //タスク更新
     @Override
     public ResponseEntity<TaskDto> tasksIdPut(Long id, TaskRequest taskRequest){
-        Task task = TaskMapper.toEntity(taskRequest);
-        return taskService.update(id, task).map(TaskMapper::toDto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        Task task = ApiMapper.toEntity(taskRequest);
+        return taskService.update(id, task).map(ApiMapper::toDto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     //タスク作成
     @Override
     public ResponseEntity<TaskDto> tasksPost(TaskRequest taskRequest){
-        Task task = TaskMapper.toEntity(taskRequest);
+        Task task = ApiMapper.toEntity(taskRequest);
         Task createdTask = taskService.create(task);
-        TaskDto dto = TaskMapper.toDto(createdTask);
+        TaskDto dto = ApiMapper.toDto(createdTask);
         return new ResponseEntity<>(dto, HttpStatus.CREATED) ;
     }
 

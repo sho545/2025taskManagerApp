@@ -9,6 +9,6 @@ public interface TaskRepository {
   List<Task> findAll() ;
   Optional<Task> findById(Long id) ;
   Task save(Task task) ;
-  boolean deleteById(Long id) ;
+  void deleteById(Long id) ;
 
 } 

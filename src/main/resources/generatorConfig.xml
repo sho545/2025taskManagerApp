@@ -15,6 +15,6 @@
         <javaModelGenerator targetPackage="com.example.demo.domain.model" targetProject="src/main/java"/>
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.infrastructure.mapper" targetProject="src/main/java"/>
 
-        <table tableName="tasks"></table>
+        <table tableName="tasks" domainObjectName="Task"></table>
     </context>
 </generatorConfiguration>
