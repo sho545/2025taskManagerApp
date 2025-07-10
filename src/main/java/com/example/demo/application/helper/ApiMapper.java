@@ -4,7 +4,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import com.example.demo.application.dto.TaskDto;
-import com.example.demo.application.dto.TaskRequest;
+import com.example.demo.application.form.TaskRequest;
 import com.example.demo.domain.model.Task;
 
 public class ApiMapper {

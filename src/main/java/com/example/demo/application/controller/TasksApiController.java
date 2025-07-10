@@ -1,7 +1,7 @@
 package com.example.demo.application.controller;
 
 import com.example.demo.application.dto.TaskDto;
-import com.example.demo.application.dto.TaskRequest;
+import com.example.demo.application.form.TaskRequest;
 import com.example.demo.application.helper.ApiMapper;
 import com.example.demo.domain.model.Task;
 import com.example.demo.domain.service.TaskService;

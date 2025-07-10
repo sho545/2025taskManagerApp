@@ -6,7 +6,7 @@
 package com.example.demo.application.controller;
 
 import com.example.demo.application.dto.TaskDto;
-import com.example.demo.application.dto.TaskRequest;
+import com.example.demo.application.form.TaskRequest;
 import com.example.demo.application.helper.ApiUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
