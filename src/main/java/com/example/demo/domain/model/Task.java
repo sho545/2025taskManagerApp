@@ -4,67 +4,67 @@ import jakarta.annotation.Generated;
 import java.util.Date;
 
 public class Task {
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.014988+09:00", comments="Source field: TASKS.ID")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.204471+09:00", comments="Source field: TASKS.ID")
     private Long id;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.TITLE")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.TITLE")
     private String title;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.DESCRIPTION")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.DESCRIPTION")
     private String description;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.IS_COMPLETED")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.IS_COMPLETED")
     private Boolean isCompleted;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.DUE_DATE")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.DUE_DATE")
     private Date dueDate;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0160265+09:00", comments="Source field: TASKS.ID")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2055105+09:00", comments="Source field: TASKS.ID")
     public Long getId() {
         return id;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.ID")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.ID")
     public void setId(Long id) {
         this.id = id;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.TITLE")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.TITLE")
     public String getTitle() {
         return title;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.TITLE")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.TITLE")
     public void setTitle(String title) {
         this.title = title;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.DESCRIPTION")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.DESCRIPTION")
     public String getDescription() {
         return description;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.DESCRIPTION")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.DESCRIPTION")
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.IS_COMPLETED")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.IS_COMPLETED")
     public Boolean getIsCompleted() {
         return isCompleted;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.IS_COMPLETED")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.IS_COMPLETED")
     public void setIsCompleted(Boolean isCompleted) {
         this.isCompleted = isCompleted;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.DUE_DATE")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.DUE_DATE")
     public Date getDueDate() {
         return dueDate;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T10:39:31.0170655+09:00", comments="Source field: TASKS.DUE_DATE")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T16:22:58.2065499+09:00", comments="Source field: TASKS.DUE_DATE")
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
