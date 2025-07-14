@@ -31,10 +31,10 @@ import org.mybatis.dynamic.sql.util.mybatis3.MyBatis3Utils;
 
 @Mapper
 public interface TaskMapper extends CommonCountMapper, CommonDeleteMapper, CommonInsertMapper<Task>, CommonUpdateMapper {
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3304778+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5793183+09:00", comments="Source Table: TASKS")
     BasicColumn[] selectList = BasicColumn.columnList(id, title, description, isCompleted, dueDate);
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3195974+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5695965+09:00", comments="Source Table: TASKS")
     @SelectProvider(type=SqlProviderAdapter.class, method="select")
     @Results(id="TaskResult", value = {
         @Result(column="ID", property="id", jdbcType=JdbcType.BIGINT, id=true),
@@ -45,29 +45,29 @@ public interface TaskMapper extends CommonCountMapper, CommonDeleteMapper, Commo
     })
     List<Task> selectMany(SelectStatementProvider selectStatement);
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3220445+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5718069+09:00", comments="Source Table: TASKS")
     @SelectProvider(type=SqlProviderAdapter.class, method="select")
     @ResultMap("TaskResult")
     Optional<Task> selectOne(SelectStatementProvider selectStatement);
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3220445+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5729169+09:00", comments="Source Table: TASKS")
     default long count(CountDSLCompleter completer) {
         return MyBatis3Utils.countFrom(this::count, task, completer);
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3231222+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5729169+09:00", comments="Source Table: TASKS")
     default int delete(DeleteDSLCompleter completer) {
         return MyBatis3Utils.deleteFrom(this::delete, task, completer);
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3250771+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.573919+09:00", comments="Source Table: TASKS")
     default int deleteByPrimaryKey(Long id_) {
         return delete(c -> 
             c.where(id, isEqualTo(id_))
         );
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3250771+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.573919+09:00", comments="Source Table: TASKS")
     default int insert(Task row) {
         return MyBatis3Utils.insert(this::insert, row, task, c ->
             c.map(id).toProperty("id")
@@ -78,7 +78,7 @@ public interface TaskMapper extends CommonCountMapper, CommonDeleteMapper, Commo
         );
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3280713+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5763063+09:00", comments="Source Table: TASKS")
     default int insertMultiple(Collection<Task> records) {
         return MyBatis3Utils.insertMultiple(this::insertMultiple, records, task, c ->
             c.map(id).toProperty("id")
@@ -89,7 +89,7 @@ public interface TaskMapper extends CommonCountMapper, CommonDeleteMapper, Commo
         );
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3280713+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5773447+09:00", comments="Source Table: TASKS")
     default int insertSelective(Task row) {
         return MyBatis3Utils.insert(this::insert, row, task, c ->
             c.map(id).toPropertyWhenPresent("id", row::getId)
@@ -100,34 +100,34 @@ public interface TaskMapper extends CommonCountMapper, CommonDeleteMapper, Commo
         );
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3304778+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5803586+09:00", comments="Source Table: TASKS")
     default Optional<Task> selectOne(SelectDSLCompleter completer) {
         return MyBatis3Utils.selectOne(this::selectOne, selectList, task, completer);
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3320832+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5803586+09:00", comments="Source Table: TASKS")
     default List<Task> select(SelectDSLCompleter completer) {
         return MyBatis3Utils.selectList(this::selectMany, selectList, task, completer);
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3329145+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.581409+09:00", comments="Source Table: TASKS")
     default List<Task> selectDistinct(SelectDSLCompleter completer) {
         return MyBatis3Utils.selectDistinct(this::selectMany, selectList, task, completer);
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3329145+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.581409+09:00", comments="Source Table: TASKS")
     default Optional<Task> selectByPrimaryKey(Long id_) {
         return selectOne(c ->
             c.where(id, isEqualTo(id_))
         );
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3341878+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.581409+09:00", comments="Source Table: TASKS")
     default int update(UpdateDSLCompleter completer) {
         return MyBatis3Utils.update(this::update, task, completer);
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3349563+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5824519+09:00", comments="Source Table: TASKS")
     static UpdateDSL<UpdateModel> updateAllColumns(Task row, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(id).equalTo(row::getId)
                 .set(title).equalTo(row::getTitle)
@@ -136,7 +136,7 @@ public interface TaskMapper extends CommonCountMapper, CommonDeleteMapper, Commo
                 .set(dueDate).equalTo(row::getDueDate);
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3349563+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5824519+09:00", comments="Source Table: TASKS")
     static UpdateDSL<UpdateModel> updateSelectiveColumns(Task row, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(id).equalToWhenPresent(row::getId)
                 .set(title).equalToWhenPresent(row::getTitle)
@@ -145,7 +145,7 @@ public interface TaskMapper extends CommonCountMapper, CommonDeleteMapper, Commo
                 .set(dueDate).equalToWhenPresent(row::getDueDate);
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3359558+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5834977+09:00", comments="Source Table: TASKS")
     default int updateByPrimaryKey(Task row) {
         return update(c ->
             c.set(title).equalTo(row::getTitle)
@@ -156,7 +156,7 @@ public interface TaskMapper extends CommonCountMapper, CommonDeleteMapper, Commo
         );
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-08T13:11:20.3359558+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-14T14:25:39.5834977+09:00", comments="Source Table: TASKS")
     default int updateByPrimaryKeySelective(Task row) {
         return update(c ->
             c.set(title).equalToWhenPresent(row::getTitle)

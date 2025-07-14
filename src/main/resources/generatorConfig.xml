@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <classPathEntry location="${user.home}/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar"/>
 
     <context id="default" targetRuntime="MyBatis3DynamicSql">
         <jdbcConnection driverClass="org.h2.Driver"
@@ -13,7 +12,7 @@
         </jdbcConnection>
 
         <javaModelGenerator targetPackage="com.example.demo.domain.model" targetProject="src/main/java"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.infrastructure.mapper" targetProject="src/main/java"/>
+        <javaClientGenerator type="MAPPER" targetPackage="com.example.demo.infrastructure.mapper" targetProject="src/main/java"/>
 
         <table tableName="tasks" domainObjectName="Task"></table>
     </context>
