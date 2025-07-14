@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	//implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -37,6 +37,7 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	add("mybatisGenerator", "org.mybatis.generator:mybatis-generator-core:1.4.2")
 	add("mybatisGenerator", "com.h2database:h2:2.2.224")
+	implementation ("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3")
 	implementation("org.mybatis.dynamic-sql:mybatis-dynamic-sql:1.4.1") 
   implementation("org.mybatis:mybatis:3.5.14")
 	implementation("org.mybatis:mybatis-spring:3.0.3") 

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.mybatis.dynamic.sql.SqlBuilder;
 import org.mybatis.dynamic.sql.render.RenderingStrategies;
 import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.domain.model.Task;
 import com.example.demo.domain.repository.TaskRepository;
@@ -13,7 +14,7 @@ import com.example.demo.infrastructure.mapper.TaskDynamicSqlSupport;
 import com.example.demo.infrastructure.mapper.TaskMapper;
 
 
-
+@Repository 
 public class TaskRepositoryImpl implements TaskRepository {
 
   private final TaskMapper taskMapper ;
