@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import jakarta.annotation.Generated;
@@ -35,20 +36,20 @@ public class TasksApiController implements TasksApi {
     }
 
     @Override
-    public ResponseEntity<Void> tasksIdDelete(Long id){
+    public ResponseEntity<Void> tasksIdDelete(UUID id){
         boolean isDeleted = taskService.delete(id) ;
         return isDeleted ? ResponseEntity.noContent().build()
                          : ResponseEntity.notFound().build();
     }
 
     @Override
-    public ResponseEntity<TaskDto> tasksIdGet(Long id){
+    public ResponseEntity<TaskDto> tasksIdGet(UUID id){
         return taskService.findById(id).map(ApiMapper::toDto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     //タスク更新
     @Override
-    public ResponseEntity<TaskDto> tasksIdPut(Long id, TaskRequest taskRequest){
+    public ResponseEntity<TaskDto> tasksIdPut(UUID id, TaskRequest taskRequest){
         Task task = ApiMapper.toEntity(taskRequest);
         return taskService.update(id, task).map(ApiMapper::toDto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
@@ -58,7 +59,7 @@ public class TasksApiController implements TasksApi {
     public ResponseEntity<TaskDto> tasksPost(TaskRequest taskRequest){
         Task task = ApiMapper.toEntity(taskRequest);
         Task createdTask = taskService.create(task);
-        TaskDto dto = ApiMapper.toDto(createdTask);
+        TaskDto dto = ApiMapper.toDto(createdTask) ;
         return new ResponseEntity<>(dto, HttpStatus.CREATED) ;
     }
 

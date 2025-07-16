@@ -2,6 +2,7 @@ package com.example.demo.infrastructure.repositorylmpl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.mybatis.dynamic.sql.SqlBuilder;
 import org.mybatis.dynamic.sql.render.RenderingStrategies;
@@ -31,7 +32,7 @@ public class TaskRepositoryImpl implements TaskRepository {
   }
 
   @Override
-  public Optional<Task> findById(Long id) {
+  public Optional<Task> findById(UUID id) {
     return taskMapper.selectByPrimaryKey(id) ;
   }
 
@@ -48,7 +49,7 @@ public class TaskRepositoryImpl implements TaskRepository {
   }
 
   @Override
-  public void deleteById(Long id) {
+  public void deleteById(UUID id) {
     taskMapper.deleteByPrimaryKey(id) ;
   }
 

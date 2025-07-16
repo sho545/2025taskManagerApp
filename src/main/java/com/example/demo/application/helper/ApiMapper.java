@@ -1,8 +1,5 @@
 package com.example.demo.application.helper;
 
-import java.time.ZoneId;
-import java.util.Date;
-
 import com.example.demo.application.dto.TaskDto;
 import com.example.demo.application.dto.TaskRequest;
 import com.example.demo.domain.model.Task;
@@ -16,11 +13,9 @@ public class ApiMapper {
     dto.setId(task.getId()); 
     dto.setTitle(task.getTitle());
     dto.setDescription(task.getDescription());
-    dto.setCompleted(task.getIsCompleted());
+    dto.completed(task.getIsCompleted());
     if(task.getDueDate() != null){
-      dto.setDueDate(task.getDueDate().toInstant()
-                         .atZone(ZoneId.systemDefault())
-                         .toOffsetDateTime());
+      dto.setDueDate(task.getDueDate());
     }
     return dto ;
   }
@@ -31,7 +26,7 @@ public class ApiMapper {
     entity.setDescription(dto.getDescription());
     entity.setIsCompleted(dto.getCompleted());
     if(dto.getDueDate() != null){
-      entity.setDueDate(Date.from(dto.getDueDate().toInstant()));
+      entity.setDueDate(dto.getDueDate());
     }
     return entity;
   }

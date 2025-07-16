@@ -2,6 +2,7 @@ package com.example.demo.domain.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,18 +23,19 @@ public class TaskService {
     return taskRepository.findAll() ;
   }
 
-  public Optional<Task> findById(Long id){
+  public Optional<Task> findById(UUID id){
     return taskRepository.findById(id) ;
   }
 
   @Transactional
   public Task create(Task task){
     task.setIsCompleted(false);
+    task.setId(UUID.randomUUID());
     return taskRepository.save(task);
   }
 
   @Transactional
-  public Optional<Task> update(Long id, Task task){
+  public Optional<Task> update(UUID id, Task task){
     return taskRepository.findById(id)
            .map(existingTask -> {
               existingTask.setTitle(task.getTitle());
@@ -45,7 +47,7 @@ public class TaskService {
   }
 
   @Transactional
-  public boolean delete(Long id){
+  public boolean delete(UUID id){
     return taskRepository.findById(id)
            .map(task ->{
             taskRepository.deleteById(id);

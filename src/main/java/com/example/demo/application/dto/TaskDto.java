@@ -1,35 +1,41 @@
 package com.example.demo.application.dto;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import java.time.OffsetDateTime;
+import java.util.UUID;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
-import javax.validation.Valid;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-import javax.annotation.Generated;
+import java.util.*;
+import jakarta.annotation.Generated;
 
 /**
- * Task
+ * TaskDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-08T10:23:28.209824900+09:00[Asia/Tokyo]", comments = "Generator version: 7.14.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-15T15:14:06.798559700+09:00[Asia/Tokyo]", comments = "Generator version: 7.5.0")
 public class TaskDto {
 
-  private @Nullable Long id;
+  private UUID id;
 
-  private @Nullable String title;
+  private String title;
 
-  private @Nullable String description;
+  private String description;
 
-  private @Nullable Boolean completed;
+  private Boolean completed;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private @Nullable OffsetDateTime dueDate;
+  private OffsetDateTime dueDate;
 
-  public TaskDto id(@Nullable Long id) {
+  public TaskDto id(UUID id) {
     this.id = id;
     return this;
   }
@@ -37,19 +43,19 @@ public class TaskDto {
   /**
    * Get id
    * @return id
-   */
-  
-  @Schema(name = "id", example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  */
+  @Valid 
+  @Schema(name = "id", example = "d290f1ee-6c54-4b01-90e6-d701748f0851", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public @Nullable Long getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(@Nullable Long id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 
-  public TaskDto title(@Nullable String title) {
+  public TaskDto title(String title) {
     this.title = title;
     return this;
   }
@@ -57,19 +63,19 @@ public class TaskDto {
   /**
    * Get title
    * @return title
-   */
+  */
   
   @Schema(name = "title", example = "Buy groceries", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
-  public @Nullable String getTitle() {
+  public String getTitle() {
     return title;
   }
 
-  public void setTitle(@Nullable String title) {
+  public void setTitle(String title) {
     this.title = title;
   }
 
-  public TaskDto description(@Nullable String description) {
+  public TaskDto description(String description) {
     this.description = description;
     return this;
   }
@@ -77,19 +83,19 @@ public class TaskDto {
   /**
    * Get description
    * @return description
-   */
+  */
   
   @Schema(name = "description", example = "Milk, eggs, bread", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
-  public @Nullable String getDescription() {
+  public String getDescription() {
     return description;
   }
 
-  public void setDescription(@Nullable String description) {
+  public void setDescription(String description) {
     this.description = description;
   }
 
-  public TaskDto completed(@Nullable Boolean completed) {
+  public TaskDto completed(Boolean completed) {
     this.completed = completed;
     return this;
   }
@@ -97,19 +103,19 @@ public class TaskDto {
   /**
    * Get completed
    * @return completed
-   */
+  */
   
   @Schema(name = "completed", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("completed")
-  public @Nullable Boolean getCompleted() {
+  public Boolean getCompleted() {
     return completed;
   }
 
-  public void setCompleted(@Nullable Boolean completed) {
+  public void setCompleted(Boolean completed) {
     this.completed = completed;
   }
 
-  public TaskDto dueDate(@Nullable OffsetDateTime dueDate) {
+  public TaskDto dueDate(OffsetDateTime dueDate) {
     this.dueDate = dueDate;
     return this;
   }
@@ -117,15 +123,15 @@ public class TaskDto {
   /**
    * Get dueDate
    * @return dueDate
-   */
+  */
   @Valid 
-  @Schema(name = "dueDate", example = "2025-07-07T23:59:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "dueDate", example = "2025-07-07T23:59Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("dueDate")
-  public @Nullable OffsetDateTime getDueDate() {
+  public OffsetDateTime getDueDate() {
     return dueDate;
   }
 
-  public void setDueDate(@Nullable OffsetDateTime dueDate) {
+  public void setDueDate(OffsetDateTime dueDate) {
     this.dueDate = dueDate;
   }
 
@@ -137,12 +143,12 @@ public class TaskDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TaskDto task = (TaskDto) o;
-    return Objects.equals(this.id, task.id) &&
-        Objects.equals(this.title, task.title) &&
-        Objects.equals(this.description, task.description) &&
-        Objects.equals(this.completed, task.completed) &&
-        Objects.equals(this.dueDate, task.dueDate);
+    TaskDto taskDto = (TaskDto) o;
+    return Objects.equals(this.id, taskDto.id) &&
+        Objects.equals(this.title, taskDto.title) &&
+        Objects.equals(this.description, taskDto.description) &&
+        Objects.equals(this.completed, taskDto.completed) &&
+        Objects.equals(this.dueDate, taskDto.dueDate);
   }
 
   @Override
@@ -153,7 +159,7 @@ public class TaskDto {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Task {\n");
+    sb.append("class TaskDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

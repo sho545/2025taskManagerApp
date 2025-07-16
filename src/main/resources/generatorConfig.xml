@@ -14,6 +14,14 @@
         <javaModelGenerator targetPackage="com.example.demo.domain.model" targetProject="src/main/java"/>
         <javaClientGenerator type="MAPPER" targetPackage="com.example.demo.infrastructure.mapper" targetProject="src/main/java"/>
 
-        <table tableName="tasks" domainObjectName="Task"></table>
+        <table tableName="tasks" domainObjectName="Task">
+            <columnOverride column="id"
+                          javaType="java.util.UUID"
+                          jdbcType="OTHER" />
+            <columnOverride column="DUE_DATE"
+                  javaType="java.time.OffsetDateTime"
+                  jdbcType="TIMESTAMP_WITH_TIMEZONE" />
+
+        </table>
     </context>
 </generatorConfiguration>
