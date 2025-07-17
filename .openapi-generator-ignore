@@ -1,0 +1,8 @@
+# 1. 全てのファイルを無視する
+**/*
+
+# 2. 必要なファイルだけを無視リストから除外する
+!**/TasksApi.java
+!**/TaskDto.java
+!**/TaskRequest.java
+!**/ApiUtil.java
