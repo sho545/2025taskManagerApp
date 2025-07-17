@@ -79,18 +79,18 @@ tasks.register("organizeApiFiles") {
         // 1. build/generated/openapi/src/main/java ディレクトリから
         //    プロジェクトの src/main/java へJavaファイルのみをコピー
         copy {
-            from("${project.buildDir}/generated/openapi/src/main/java/com/example/demo/generated/application/controller")
+            from("${project.buildDir}/generated-code/src/main/java/com/example/demo/generated/application/controller")
             into("src/main/java/com/example/demo/generated/application/controller")
 			include("TasksApi.java", "ApiUtil.java")
         }
 		copy {
-            from("${project.buildDir}/generated/openapi/src/main/java/com/example/demo/generated/application/dto")
+            from("${project.buildDir}/generated-code/src/main/java/com/example/demo/generated/application/dto")
             into("src/main/java/com/example/demo/generated/application/dto")
 			include("TaskDto.java", "TaskRequest.java")
         }
 
         // 2. コピー元となった一時的な生成物ディレクトリをすべて削除
-        delete("${project.buildDir}/generated/openapi")
+        delete("${project.buildDir}/generated-code")
     }
 }
 

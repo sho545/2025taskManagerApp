@@ -45,6 +45,7 @@ paths:
           required: true
           schema:
             type: integer
+            format: int64
       responses:
         '200':
           description: A single task
@@ -62,6 +63,7 @@ paths:
           required: true
           schema:
             type: integer
+            format: int64
       requestBody:
         required: true
         content:
@@ -85,6 +87,7 @@ paths:
           required: true
           schema:
             type: integer
+            format: int64
       responses:
         '204':
           description: Task deleted
@@ -98,6 +101,8 @@ components:
       properties:
         id:
           type: integer
+          format: int64   
+          readOnly: true
           example: 1
         title:
           type: string
