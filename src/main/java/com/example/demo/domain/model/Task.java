@@ -1,6 +1,6 @@
 package com.example.demo.domain.model;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import lombok.*;
 
 @Getter
@@ -10,5 +10,5 @@ public class Task {
     private String title ;
     private String description ;
     private boolean isCompleted ;
-    private Date dueDate ;
+    private OffsetDateTime dueDate ;
 }

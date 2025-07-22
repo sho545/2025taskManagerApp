@@ -33,7 +33,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 
   @Override
   public Task findById(Long id) {
-    TaskEntity entity = new TaskEntity() ;
+    TaskEntity entity = null ;
     return toDomain(taskMapper.selectByPrimaryKey(id).orElse(entity)) ;
   }
 

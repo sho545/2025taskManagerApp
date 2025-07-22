@@ -1,56 +1,57 @@
-// package com.example.demo.domain.service;
+package com.example.demo.domain.service;
 
-// import java.util.List;
-// import java.util.Optional;
+import java.util.List;
+import java.util.NoSuchElementException;
 
-// import org.springframework.stereotype.Service;
-// import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-// import com.example.demo.domain.model.Task;
-// import com.example.demo.domain.repository.TaskRepository;
+import com.example.demo.domain.model.Task;
+import com.example.demo.domain.repository.TaskRepository;
 
-// @Service
-// public class TaskService {
+@Service
+public class TaskService {
 
-//   private final TaskRepository taskRepository ;
+  private final TaskRepository taskRepository ;
 
-//   public TaskService(TaskRepository taskRepository){
-//     this.taskRepository = taskRepository ;
-//   }
+  public TaskService(TaskRepository taskRepository){
+    this.taskRepository = taskRepository ;
+  }
 
-//   public List<Task> findAll(){
-//     return taskRepository.findAll() ;
-//   }
+  public List<Task> findAll(){
+    return taskRepository.findAll() ;
+  }
 
-//   public Optional<Task> findById(Long id){
-//     return taskRepository.findById(id) ;
-//   }
+  public Task findById(Long id){
 
-//   @Transactional
-//   public Task create(Task task){
-//     task.setCompleted(false);
-//     return taskRepository.save(task);
-//   }
+    Task task = taskRepository.findById(id) ;
 
-//   @Transactional
-//   public Optional<Task> update(Long id, Task task){
-//     return taskRepository.findById(id)
-//            .map(existingTask -> {
-//               existingTask.setTitle(task.getTitle());
-//               existingTask.setDescription(task.getDescription());
-//               existingTask.setCompleted(task.isCompleted());
-//               existingTask.setDueDate(task.getDueDate());
-//               return taskRepository.save(existingTask);
-//            });
-//   }
+    if(task != null){
+        return task ;
+    } else {
+        throw new NoSuchElementException("id" + id + "のタスクはありません") ;
+    }
 
-//   @Transactional
-//   public boolean delete(Long id){
-//     return taskRepository.findById(id)
-//            .map(task ->{
-//             taskRepository.deleteById(id);
-//             return true;
-//            }).orElse(false) ;
-//   }
+  }
 
-// }
+  @Transactional
+  public Task create(Task task){
+    task.setCompleted(false);
+    return taskRepository.save(task);
+  }
+
+  @Transactional
+  public Task update(Long id, Task task){
+    if(taskRepository.findById(id) != null){
+        return taskRepository.save(task) ;
+    } else {
+        throw new NoSuchElementException("id"+id+"のタスクは存在しません") ;
+    }
+  }
+
+  @Transactional
+  public void delete(Long id){
+    taskRepository.deleteById(id);
+  }
+
+}
