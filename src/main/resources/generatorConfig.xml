@@ -6,7 +6,7 @@
 
     <context id="default" targetRuntime="MyBatis3DynamicSql">
 
-        <plugin type="com.example.demo.resources.UseGeneratedKeysPlugin"/>
+        <!-- <plugin type="com.example.demo.resources.UseGeneratedKeysPlugin"/> -->
 
         <!-- <plugin type="org.mybatis.generator.plugins.dsql.MapperAnnotationPlugin" /> -->
 
@@ -20,7 +20,7 @@
         <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.example.demo.generated.infrastructure.mapper" targetProject="src/main/java"/>
 
         <table tableName="TASKS" domainObjectName="TaskEntity">
-            <!-- <generatedKey column="id" sqlStatement="JDBC" identity="true" /> -->
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
 
             <columnOverride column="DUE_DATE"
                   javaType="java.time.OffsetDateTime"
