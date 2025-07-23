@@ -5,7 +5,8 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.7"
   	// id("org.mybatis.generator") version "1.6.1"
 	id("org.openapi.generator") version "7.5.0"
-
+	//id("nu.studer.jooq")
+	// id("nu.studer.jooq") version "3.0.3"
 }
 
 group = "com.example"
@@ -25,6 +26,20 @@ repositories {
 	mavenCentral()
 }
 
+// mybatisGenerator {
+//     dependencies {
+//         mybatisGenerator("org.mybatis.generator:mybatis-generator-core:1.4.2")
+//         mybatisGenerator("com.h2database:h2:2.2.224")
+//         mybatisGenerator("org.mybatis.dynamic-sql:mybatis-dynamic-sql:1.5.0")
+//     }
+
+//     configurations {
+//         main {
+//             configFile.set(file("src/main/resources/generatorConfig.xml"))
+//         }
+//     }
+// }
+
 dependencies {
 	//implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation ("org.springframework.boot:spring-boot-starter-jdbc")
@@ -38,6 +53,7 @@ dependencies {
 	implementation("org.mybatis.generator:mybatis-generator-core:1.4.2")
 	add("mybatisGenerator", "org.mybatis.generator:mybatis-generator-core:1.4.2")
 	add("mybatisGenerator", "com.h2database:h2:2.2.224")
+	//add("mybatisGenerator", "org.mybatis.dynamic-sql:mybatis-dynamic-sql:1.5.0")
 	implementation("org.mybatis.dynamic-sql:mybatis-dynamic-sql:1.4.1") 
 	implementation ("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4")
   	// implementation("org.mybatis:mybatis:3.5.14")

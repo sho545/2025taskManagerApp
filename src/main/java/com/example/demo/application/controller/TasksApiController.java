@@ -83,7 +83,7 @@ public class TasksApiController implements TasksApi {
         Task model = new Task();
         model.setTitle(dto.getTitle());
         model.setDescription(dto.getDescription());
-        model.setCompleted(dto.getCompleted());
+        model.setCompleted(dto.getCompleted() != null ? dto.getCompleted() : false);
         if(dto.getDueDate() != null){
             model.setDueDate(dto.getDueDate());
         }

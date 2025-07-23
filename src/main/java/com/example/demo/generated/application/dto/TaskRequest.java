@@ -20,14 +20,14 @@ import jakarta.annotation.Generated;
  * TaskRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-22T17:42:24.786965900+09:00[Asia/Tokyo]", comments = "Generator version: 7.5.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-23T10:26:22.567110+09:00[Asia/Tokyo]", comments = "Generator version: 7.5.0")
 public class TaskRequest {
 
   private String title;
 
   private String description;
 
-  private Boolean completed;
+  private Boolean completed = false;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime dueDate;
