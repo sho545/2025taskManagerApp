@@ -7,25 +7,25 @@ import org.mybatis.dynamic.sql.AliasableSqlTable;
 import org.mybatis.dynamic.sql.SqlColumn;
 
 public final class TaskEntityDynamicSqlSupport {
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:06:46.0206141+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:27:45.2368566+09:00", comments="Source Table: TASKS")
     public static final TaskEntity taskEntity = new TaskEntity();
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:06:46.0216543+09:00", comments="Source field: TASKS.ID")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:27:45.2378541+09:00", comments="Source field: TASKS.ID")
     public static final SqlColumn<Long> id = taskEntity.id;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:06:46.0276431+09:00", comments="Source field: TASKS.TITLE")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:27:45.2387509+09:00", comments="Source field: TASKS.TITLE")
     public static final SqlColumn<String> title = taskEntity.title;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:06:46.0288768+09:00", comments="Source field: TASKS.DESCRIPTION")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:27:45.2387509+09:00", comments="Source field: TASKS.DESCRIPTION")
     public static final SqlColumn<String> description = taskEntity.description;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:06:46.0288768+09:00", comments="Source field: TASKS.IS_COMPLETED")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:27:45.2387509+09:00", comments="Source field: TASKS.IS_COMPLETED")
     public static final SqlColumn<Boolean> isCompleted = taskEntity.isCompleted;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:06:46.0288768+09:00", comments="Source field: TASKS.DUE_DATE")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:27:45.2387509+09:00", comments="Source field: TASKS.DUE_DATE")
     public static final SqlColumn<OffsetDateTime> dueDate = taskEntity.dueDate;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:06:46.0216543+09:00", comments="Source Table: TASKS")
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2025-07-23T13:27:45.2378541+09:00", comments="Source Table: TASKS")
     public static final class TaskEntity extends AliasableSqlTable<TaskEntity> {
         public final SqlColumn<Long> id = column("ID", JDBCType.BIGINT);
 
