@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  * TaskRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-23T13:06:25.520631600+09:00[Asia/Tokyo]", comments = "Generator version: 7.5.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-29T09:43:02.474207800+09:00[Asia/Tokyo]", comments = "Generator version: 7.5.0")
 public class TaskRequest {
 
   private String title;

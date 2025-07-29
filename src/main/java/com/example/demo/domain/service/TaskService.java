@@ -12,45 +12,46 @@ import com.example.demo.domain.repository.TaskRepository;
 @Service
 public class TaskService {
 
-  private final TaskRepository taskRepository ;
+  private final TaskRepository taskRepository;
 
-  public TaskService(TaskRepository taskRepository){
-    this.taskRepository = taskRepository ;
+  public TaskService(TaskRepository taskRepository) {
+    this.taskRepository = taskRepository;
   }
 
-  public List<Task> findAll(){
-    return taskRepository.findAll() ;
+  public List<Task> findAll() {
+    return taskRepository.findAll();
   }
 
-  public Task findById(Long id){
+  public Task findById(Long id) {
 
-    Task task = taskRepository.findById(id) ;
+    Task task = taskRepository.findById(id);
 
-    if(task != null){
-        return task ;
+    if (task != null) {
+      return task;
     } else {
-        throw new NoSuchElementException("id" + id + "のタスクはありません") ;
+      throw new NoSuchElementException("id" + id + "のタスクはありません");
     }
 
   }
 
   @Transactional
-  public Task create(Task task){
+  public Task create(Task task) {
     task.setCompleted(false);
     return taskRepository.save(task);
   }
 
   @Transactional
-  public Task update(Long id, Task task){
-    if(taskRepository.findById(id) != null){
-        return taskRepository.save(task) ;
+  public Task update(Long id, Task task) {
+    if (taskRepository.findById(id) != null) {
+      task.setId(id);
+      return taskRepository.save(task);
     } else {
-        throw new NoSuchElementException("id"+id+"のタスクは存在しません") ;
+      throw new NoSuchElementException("id" + id + "のタスクは存在しません");
     }
   }
 
   @Transactional
-  public void delete(Long id){
+  public void delete(Long id) {
     taskRepository.deleteById(id);
   }
 
