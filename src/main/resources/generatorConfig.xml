@@ -6,7 +6,9 @@
 
     <context id="default" targetRuntime="MyBatis3DynamicSql">
 
-        <plugin type="com.example.demo.resources.UseGeneratedKeysPlugin"/>
+        <!-- <plugin type="com.example.demo.resources.UseGeneratedKeysPlugin"/> -->
+
+        <!-- <plugin type="org.mybatis.generator.plugins.dsql.MapperAnnotationPlugin" /> -->
 
         <jdbcConnection driverClass="org.h2.Driver"
                         connectionURL="jdbc:h2:file:./mybatis-db/testdb;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE"
@@ -14,9 +16,15 @@
                         password="">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.example.demo.domain.model" targetProject="src/main/java"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.infrastructure.mapper" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.example.demo.generated.infrastructure.entity" targetProject="src/main/java"/>
+        <javaClientGenerator type="MAPPER" targetPackage="com.example.demo.generated.infrastructure.mapper" targetProject="src/main/java"/>
 
-        <table tableName="tasks" domainObjectName="Task"></table>
+        <table tableName="TASKS" domainObjectName="TaskEntity">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+
+            <columnOverride column="DUE_DATE"
+                  javaType="java.time.OffsetDateTime"
+                  jdbcType="TIMESTAMP_WITH_TIMEZONE" />
+        </table>
     </context>
 </generatorConfiguration>

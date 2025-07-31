@@ -1,0 +1,22 @@
+{
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json": "api/openapi.yaml"
+  },
+  "java.jdt.ls.java.home": "C:\\Users\\sho shimomichi\\AppData\\Local\\Programs\\Microsoft\\jdk-17.0.15.6-hotspot",
+
+  // ファイル保存時に自動フォーマット
+  "editor.formatOnSave": true,
+
+  // インデントはスペース2つ
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+
+  // Javaファイル用の設定
+  "[java]": {
+      // デフォルトのフォーマッターをJava拡張機能に設定
+      "editor.defaultFormatter": "redhat.java"
+  }
+
+}

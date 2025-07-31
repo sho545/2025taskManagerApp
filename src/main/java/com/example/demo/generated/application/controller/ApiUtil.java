@@ -1,4 +1,4 @@
-package com.example.demo.application.helper;
+package com.example.demo.generated.application.controller;
 
 import org.springframework.web.context.request.NativeWebRequest;
 

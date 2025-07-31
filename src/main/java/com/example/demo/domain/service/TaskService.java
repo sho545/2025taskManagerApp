@@ -1,7 +1,7 @@
 package com.example.demo.domain.service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,45 +12,47 @@ import com.example.demo.domain.repository.TaskRepository;
 @Service
 public class TaskService {
 
-  private final TaskRepository taskRepository ;
+  private final TaskRepository taskRepository;
 
-  public TaskService(TaskRepository taskRepository){
-    this.taskRepository = taskRepository ;
+  public TaskService(TaskRepository taskRepository) {
+    this.taskRepository = taskRepository;
   }
 
-  public List<Task> findAll(){
-    return taskRepository.findAll() ;
+  public List<Task> findAll() {
+    return taskRepository.findAll();
   }
 
-  public Optional<Task> findById(Long id){
-    return taskRepository.findById(id) ;
+  public Task findById(Long id) {
+
+    Task task = taskRepository.findById(id);
+
+    if (task != null) {
+      return task;
+    } else {
+      throw new NoSuchElementException("id" + id + "のタスクはありません");
+    }
+
   }
 
   @Transactional
-  public Task create(Task task){
-    task.setIsCompleted(false);
+  public Task create(Task task) {
+    task.setCompleted(false);
     return taskRepository.save(task);
   }
 
   @Transactional
-  public Optional<Task> update(Long id, Task task){
-    return taskRepository.findById(id)
-           .map(existingTask -> {
-              existingTask.setTitle(task.getTitle());
-              existingTask.setDescription(task.getDescription());
-              existingTask.setIsCompleted(task.getIsCompleted());
-              existingTask.setDueDate(task.getDueDate());
-              return taskRepository.save(existingTask);
-           });
+  public Task update(Long id, Task task) {
+    if (taskRepository.findById(id) != null) {
+      task.setId(id);
+      return taskRepository.save(task);
+    } else {
+      throw new NoSuchElementException("id" + id + "のタスクは存在しません");
+    }
   }
 
   @Transactional
-  public boolean delete(Long id){
-    return taskRepository.findById(id)
-           .map(task ->{
-            taskRepository.deleteById(id);
-            return true;
-           }).orElse(false) ;
+  public void delete(Long id) {
+    taskRepository.deleteById(id);
   }
 
 }
