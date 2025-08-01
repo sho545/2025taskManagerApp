@@ -3,20 +3,24 @@ package com.example.demo.application.controller;
 import com.example.demo.generated.application.controller.TasksApi;
 import com.example.demo.generated.application.dto.TaskDto;
 import com.example.demo.generated.application.dto.TaskRequest;
+
 import com.example.demo.domain.model.Task;
 import com.example.demo.domain.service.TaskService;
+import com.example.demo.exception.ResourceNotFoundException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
+@Validated
 @CrossOrigin(origins = "http://localhost:5173")
 public class TasksApiController implements TasksApi {
 
@@ -26,10 +30,18 @@ public class TasksApiController implements TasksApi {
         this.taskService = taskService;
     }
 
-    @ExceptionHandler(NoSuchElementException.class)
+    @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Object> handleNotFound() {
         // 404 Not Found レスポンスを返す
         return ResponseEntity.notFound().build();
+    }
+
+    // 400 Bad Request を返すハンドラーを追加
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> handleBadRequest(IllegalArgumentException ex) {
+        // エラーメッセージをレスポンスボディに含めて返す
+        Map<String, String> errorBody = Map.of("message", ex.getMessage());
+        return new ResponseEntity<>(errorBody, HttpStatus.BAD_REQUEST);
     }
 
     @Override

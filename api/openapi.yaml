@@ -136,7 +136,6 @@ components:
           example: Milk, eggs, bread
         completed:
           type: boolean
-          default: false
           example: false
         dueDate:
           type: string
