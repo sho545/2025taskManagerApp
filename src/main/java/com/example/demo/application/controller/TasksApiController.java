@@ -81,7 +81,7 @@ public class TasksApiController implements TasksApi {
         return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
 
-    private TaskDto toDto(Task task) {
+    TaskDto toDto(Task task) {
         TaskDto dto = new TaskDto();
         dto.setId(task.getId());
         dto.setTitle(task.getTitle());
@@ -93,7 +93,7 @@ public class TasksApiController implements TasksApi {
         return dto;
     }
 
-    private Task toModel(TaskRequest dto) {
+    public Task toModel(TaskRequest dto) {
         Task model = new Task();
         model.setTitle(dto.getTitle());
         model.setDescription(dto.getDescription());

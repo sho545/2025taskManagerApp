@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS tasks;
+
+CREATE TABLE tasks (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description text,
+    is_completed BOOLEAN DEFAULT FALSE NOT NULL,
+    due_date TIMESTAMP WITH TIME ZONE NOT NULL
+);
