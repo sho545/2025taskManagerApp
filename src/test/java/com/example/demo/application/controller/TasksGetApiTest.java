@@ -20,7 +20,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestExecutionListeners(value = {
-    // 1. DIコンテナを準備するリスナー
     DependencyInjectionTestExecutionListener.class,
     TransactionDbUnitTestExecutionListener.class
 })
