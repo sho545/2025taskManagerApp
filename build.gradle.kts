@@ -50,6 +50,8 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4")
+    testImplementation ("com.github.springtestdbunit:spring-test-dbunit:1.3.0")
+    testImplementation ("org.dbunit:dbunit:2.7.3")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.mybatis.generator:mybatis-generator-core:1.4.2")
 	add("mybatisGenerator", "org.mybatis.generator:mybatis-generator-core:1.4.2")

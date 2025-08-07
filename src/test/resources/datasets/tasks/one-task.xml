@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <tasks id="1"
+           title="Test Insert"
+           description="DBUnitが挿入できるかテスト"
+           is_completed="false"
+           due_date="2025-10-01 19:00:00" />
+</dataset>
