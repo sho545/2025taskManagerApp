@@ -38,11 +38,11 @@ public class TasksGetApiTest {
         .andExpect(jsonPath("$[0].title").value("DBUnitのタスク1"))
         .andExpect(jsonPath("$[0].description").value("これはセットアップされました。"))
         .andExpect(jsonPath("$[0].completed").value(false))
-        .andExpect(jsonPath("$[0].dueDate").value("2025-10-01T19:00:00+09:00"))
+        .andExpect(jsonPath("$[0].dueDate").value("2025-10-01T12:00:00+09:00"))
         .andExpect(jsonPath("$[1].title").value("DBUnitのタスク2"))
         .andExpect(jsonPath("$[1].description").value("これもセットされたデータです。"))
         .andExpect(jsonPath("$[1].completed").value(true))
-        .andExpect(jsonPath("$[1].dueDate").value("2025-10-02T19:00:00+09:00"));
+        .andExpect(jsonPath("$[1].dueDate").value("2025-10-02T12:00:00+09:00"));
   }
 
   @Test

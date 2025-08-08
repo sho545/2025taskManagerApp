@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.within;
 
 import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.sql.Timestamp;
@@ -17,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.TestExecutionListeners;
@@ -24,6 +24,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import com.example.demo.TestConfig;
 import com.example.demo.generated.application.dto.TaskDto;
 import com.example.demo.generated.application.dto.TaskRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,6 +34,7 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Import(TestConfig.class)
 @TestExecutionListeners(value = {
     DependencyInjectionTestExecutionListener.class,
     TransactionDbUnitTestExecutionListener.class
@@ -85,9 +87,12 @@ public class TasksPostApiTest {
     assertThat(taskFromDb.get("TITLE")).isEqualTo("新しいタスク");
     assertThat(taskFromDb.get("IS_COMPLETED")).isEqualTo(false);
 
-    // 3. 日時を動的に検証
+    // 1. Mapからは、まず古いTimestamp型として値を取り出す
     Timestamp dueDateTimestamp = (Timestamp) taskFromDb.get("DUE_DATE");
-    OffsetDateTime dueDateFromDb = dueDateTimestamp.toInstant().atOffset(ZoneOffset.UTC);
+
+    // 2. それをInstant経由で、新しいOffsetDateTime型に変換する
+    OffsetDateTime dueDateFromDb = dueDateTimestamp.toInstant().atOffset(futureTime.getOffset());
+
     // 実行時のわずかな誤差を許容するため、2秒以内であればOKとする
     assertThat(dueDateFromDb).isCloseTo(futureTime, within(2, ChronoUnit.SECONDS));
   }
@@ -174,7 +179,7 @@ public class TasksPostApiTest {
   @Test
   @DatabaseSetup("/datasets/tasks/no-task.xml")
   @ExpectedDatabase(value = "/datasets/tasks/no-task.xml", table = "TASKS") // 期待結果：DBは空のまま
-  void tasksPost_shouldReturnBadRequest_whenDescriptionContainHalfWidthCaracters() throws Exception {
+  void tasksPost_shouldReturnBadRequest_whenDescriptionContainHalfWidthCharacters() throws Exception {
 
     // 1. Given: DTOオブジェクトを直接作成
     TaskRequest requestDto = new TaskRequest();

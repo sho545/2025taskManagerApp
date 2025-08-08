@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <tasks ID="100"
+           TITLE="DBUnitのタスク1"
+           DESCRIPTION="更新されました。"
+           IS_COMPLETED="true"
+           DUE_DATE="2025-10-01 21:00:00" />  <!--DbUnitではTIMESTAMP WITH ZONE TIMEを扱えないためこの値を取り出すときに日本時間(PCのタイムゾーン)に変換するからUTCとの時差分を考慮した値にしておきます --> 
+    <tasks ID="200"
+           TITLE="DBUnitのタスク2"
+           DESCRIPTION="これもセットされたデータです。"
+           IS_COMPLETED="true"
+           DUE_DATE="2025-10-02 12:00:00" />
+</dataset>

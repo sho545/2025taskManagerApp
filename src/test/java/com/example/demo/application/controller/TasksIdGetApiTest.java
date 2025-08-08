@@ -39,7 +39,7 @@ public class TasksIdGetApiTest {
         .andExpect(jsonPath("$.title", is("DBUnitのタスク1")))
         .andExpect(jsonPath("$.description", is("これはセットアップされました。")))
         .andExpect(jsonPath("$.completed", is(false)))
-        .andExpect(jsonPath("$.dueDate", is("2025-10-01T19:00:00+09:00")));
+        .andExpect(jsonPath("$.dueDate", is("2025-10-01T12:00:00+09:00"))); // Dbから取り出すときにPCのタイムゾーンで取り出しているから日本時間として比較しています
   }
 
   // tasksIdGetでタスクがなかった時のテスト
