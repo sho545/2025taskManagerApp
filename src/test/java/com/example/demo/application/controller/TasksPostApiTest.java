@@ -30,11 +30,13 @@ import com.example.demo.generated.application.dto.TaskRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @Import(TestConfig.class)
+@DbUnitConfiguration(databaseConnection = "dbUnitDatabaseConnection")
 @TestExecutionListeners(value = {
     DependencyInjectionTestExecutionListener.class,
     TransactionDbUnitTestExecutionListener.class
@@ -88,10 +90,11 @@ public class TasksPostApiTest {
     assertThat(taskFromDb.get("IS_COMPLETED")).isEqualTo(false);
 
     // 1. Mapからは、まず古いTimestamp型として値を取り出す
-    Timestamp dueDateTimestamp = (Timestamp) taskFromDb.get("DUE_DATE");
+    OffsetDateTime dueDateFromDb = (OffsetDateTime) taskFromDb.get("DUE_DATE");
 
     // 2. それをInstant経由で、新しいOffsetDateTime型に変換する
-    OffsetDateTime dueDateFromDb = dueDateTimestamp.toInstant().atOffset(futureTime.getOffset());
+    // OffsetDateTime dueDateFromDb =
+    // dueDateTimestamp.toInstant().atOffset(futureTime.getOffset());
 
     // 実行時のわずかな誤差を許容するため、2秒以内であればOKとする
     assertThat(dueDateFromDb).isCloseTo(futureTime, within(2, ChronoUnit.SECONDS));
