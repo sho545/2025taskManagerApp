@@ -17,7 +17,8 @@ public class CustomH2DataTypeFactory extends H2DataTypeFactory {
     // H2のTIMESTAMP WITH TIME ZONEは、JDBCの型番号 2014 として扱われる
     if (sqlType == Types.TIMESTAMP_WITH_TIMEZONE) {
       // この型の場合は、DBUnitが扱える標準のTimestamp型として認識させる
-      return DataType.TIMESTAMP;
+      // return DataType.TIMESTAMP;
+      return new CustomIsoTimestampDataType();
     }
 
     // それ以外の型は、元々のH2DataTypeFactoryの処理に任せる

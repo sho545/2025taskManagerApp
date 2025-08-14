@@ -4,5 +4,5 @@
            title="Test Insert"
            description="DBUnitが挿入できるかテスト"
            is_completed="false"
-           due_date="2025-10-01 19:00:00" />
+           due_date="2025-10-01T19:00:00Z" />
 </dataset>
