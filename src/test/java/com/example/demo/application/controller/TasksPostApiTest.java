@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.within;
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
-import java.sql.Timestamp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import com.example.demo.TestConfig;
+import com.example.demo.config.TestConfig;
 import com.example.demo.generated.application.dto.TaskDto;
 import com.example.demo.generated.application.dto.TaskRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;

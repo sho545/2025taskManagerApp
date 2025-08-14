@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.example.demo.TestConfig;
+import com.example.demo.config.TestConfig;
 
 @SpringBootTest
 @AutoConfigureMockMvc
