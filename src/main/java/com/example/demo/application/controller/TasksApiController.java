@@ -3,20 +3,21 @@ package com.example.demo.application.controller;
 import com.example.demo.generated.application.controller.TasksApi;
 import com.example.demo.generated.application.dto.TaskDto;
 import com.example.demo.generated.application.dto.TaskRequest;
+
 import com.example.demo.domain.model.Task;
 import com.example.demo.domain.service.TaskService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @RestController
+@Validated
 @CrossOrigin(origins = "http://localhost:5173")
 public class TasksApiController implements TasksApi {
 
@@ -24,12 +25,6 @@ public class TasksApiController implements TasksApi {
 
     public TasksApiController(TaskService taskService) {
         this.taskService = taskService;
-    }
-
-    @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<Object> handleNotFound() {
-        // 404 Not Found レスポンスを返す
-        return ResponseEntity.notFound().build();
     }
 
     @Override
@@ -69,7 +64,7 @@ public class TasksApiController implements TasksApi {
         return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
 
-    private TaskDto toDto(Task task) {
+    TaskDto toDto(Task task) {
         TaskDto dto = new TaskDto();
         dto.setId(task.getId());
         dto.setTitle(task.getTitle());
@@ -81,7 +76,7 @@ public class TasksApiController implements TasksApi {
         return dto;
     }
 
-    private Task toModel(TaskRequest dto) {
+    public Task toModel(TaskRequest dto) {
         Task model = new Task();
         model.setTitle(dto.getTitle());
         model.setDescription(dto.getDescription());

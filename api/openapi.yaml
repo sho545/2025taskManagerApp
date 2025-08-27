@@ -126,13 +126,16 @@ components:
       properties:
         title:
           type: string
+          minLength: 1
+          maxLength: 20
           example: Buy groceries
         description:
           type: string
+          maxLength: 50
+          pattern: '^[^a-zA-Z0-9]*$' 
           example: Milk, eggs, bread
         completed:
           type: boolean
-          default: false
           example: false
         dueDate:
           type: string

@@ -20,14 +20,14 @@ import jakarta.annotation.Generated;
  * TaskRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-29T09:43:02.474207800+09:00[Asia/Tokyo]", comments = "Generator version: 7.5.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-14T14:45:53.318830800+09:00[Asia/Tokyo]", comments = "Generator version: 7.5.0")
 public class TaskRequest {
 
   private String title;
 
   private String description;
 
-  private Boolean completed = false;
+  private Boolean completed;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime dueDate;
@@ -53,7 +53,7 @@ public class TaskRequest {
    * Get title
    * @return title
   */
-  @NotNull 
+  @NotNull @Size(min = 1, max = 20) 
   @Schema(name = "title", example = "Buy groceries", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("title")
   public String getTitle() {
@@ -73,7 +73,7 @@ public class TaskRequest {
    * Get description
    * @return description
   */
-  
+  @Pattern(regexp = "^[^a-zA-Z0-9]*$") @Size(max = 50) 
   @Schema(name = "description", example = "Milk, eggs, bread", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public String getDescription() {

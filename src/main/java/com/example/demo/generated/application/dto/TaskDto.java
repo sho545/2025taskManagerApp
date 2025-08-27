@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  * TaskDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-07-29T09:43:02.474207800+09:00[Asia/Tokyo]", comments = "Generator version: 7.5.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-08-14T14:45:53.318830800+09:00[Asia/Tokyo]", comments = "Generator version: 7.5.0")
 public class TaskDto {
 
   private Long id;

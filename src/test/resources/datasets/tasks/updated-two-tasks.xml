@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <tasks ID="100"
+           TITLE="DBUnitのタスク1"
+           DESCRIPTION="更新されました。"
+           IS_COMPLETED="true"
+           DUE_DATE="2025-10-01T12:00:00Z" /> 
+    <tasks ID="200"
+           TITLE="DBUnitのタスク2"
+           DESCRIPTION="これもセットされたデータです。"
+           IS_COMPLETED="true"
+           DUE_DATE="2025-10-02T12:00:00Z" />
+</dataset>
